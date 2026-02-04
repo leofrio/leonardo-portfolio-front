@@ -1,0 +1,8 @@
+<nav class="navbar">
+    @for (country of countryCommonNames;track country.country) {
+        <div class="nav-item">
+            <span class="country-name">{{country.country}}:</span>
+                <span class="common-names">{{country.commonMenName}}, {{country.commonWomenName}}</span>
+        </div>
+    }
+</nav>

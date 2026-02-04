@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+
+$primary-color: linear-gradient(to right, #1A2A3A, #154255);
+body { 
+    background:$primary-color ;
+}
