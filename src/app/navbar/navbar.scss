@@ -1,0 +1,177 @@
+// ============================
+// Variables
+// ============================
+$color-black: #000;
+$color-white: #fff;
+$color-dark: #0f0f0f;
+$color-dark-hover: #333;
+$color-border: #555;
+$color-border-light: #a9a9a9;
+$color-accent: hsl(213, 35%, 40%);
+$color-accent-dark: hsl(213, 35%, 16%);
+$shadow-focus: 0 0 0 3px rgba(35, 80, 155, 0.2);
+$shadow-navbar: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+$radius-sm: 4px;
+$transition-default: background-color 0.3s ease;
+
+// ============================
+// Navbar
+// ============================
+.navbar {
+  background-color: $color-black;
+  border-color: $color-black !important;
+  border-bottom: 2px solid $color-border-light;
+  box-shadow: $shadow-navbar;
+
+  display: flex;
+  align-items: center;
+  justify-content: center; // centraliza o conteúdo
+  padding: 10px 20px;
+
+  &-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap; // permite quebra em telas menores
+  }
+}
+
+// ============================
+// Logo
+// ============================
+.logo-link {
+  display: flex;
+  align-items: center;
+  width: 20%;
+}
+
+.logo {
+  height: 40px;
+  cursor: pointer;
+}
+
+// ============================
+// Nav links
+// ============================
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 35%;
+}
+
+.nav-item {
+  color: $color-white;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: $radius-sm;
+  transition: $transition-default;
+
+  &:hover {
+    background-color: $color-dark-hover;
+  }
+}
+
+// ============================
+// Search / Autocomplete
+// ============================
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 45%;
+  margin-inline: auto;
+}
+
+.custom-autocomplete {
+  position: relative;
+  width: 100%;
+
+  .p-inputtext {
+    background-color: $color-dark;
+    color: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    padding: 8px;
+
+    &:focus {
+      border-color: $color-accent;
+      box-shadow: $shadow-focus;
+    }
+  }
+
+  .p-autocomplete-input {
+    width: 100%;
+  }
+
+  .p-autocomplete-panel {
+    background-color: $color-black;
+    color: $color-white;
+    border: 1px solid $color-border;
+  }
+
+  .p-autocomplete-item {
+    padding: 10px;
+    border-bottom: 1px solid $color-dark-hover;
+
+    &:hover {
+      background-color: $color-accent-dark;
+      color: $color-white;
+    }
+  }
+
+  .p-autocomplete-dropdown {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: $color-white;
+  }
+}
+
+// Global PrimeVue panel/item overrides (outside custom-autocomplete scope)
+.p-autocomplete-panel {
+  background-color: $color-dark;
+  color: $color-white;
+  padding: 2px 4px;
+}
+
+.p-autocomplete-item {
+  background-color: $color-dark;
+  color: $color-white;
+}
+
+// ============================
+// Responsive
+// ============================
+@media screen and (max-width: 768px) {
+  .navbar {
+    &-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .logo-link {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .search-container {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav-item {
+    padding: 8px;
+  }
+}

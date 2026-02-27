@@ -1,0 +1,49 @@
+.nav-item {
+  position: relative;
+  overflow: hidden;
+  width: 260px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: white;
+
+  .flag-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    object-fit: fill;     // ✅ THIS is the "stretch to fill" equivalent
+    opacity: 0;
+    transition: opacity 200ms ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    opacity: 0;
+    transition: opacity 200ms ease;
+    z-index: 1;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .flag-bg,
+    &::after {
+      opacity: 1;
+    }
+  }
+}

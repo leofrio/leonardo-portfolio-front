@@ -1,0 +1,9 @@
+<nav class="navbar">
+    @for (country of countryCommonNames;track country.country) {
+        <div class="nav-item" (click)="click(country)"  >
+            <img class="flag-bg" [src]="country.propertyUrl" alt="" />
+            <span class="country-name">{{country.country}}:</span>
+                <span class="common-names">{{country.commonMenName}}, {{country.commonWomenName}}</span>
+        </div>
+    }
+</nav>

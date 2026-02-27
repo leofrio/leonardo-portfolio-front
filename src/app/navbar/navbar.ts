@@ -1,72 +1,55 @@
 import { Component } from '@angular/core';
+import { AutoCompleteModule,AutoCompleteSelectEvent } from 'primeng/autocomplete';
+import { ButtonModule } from 'primeng/button';
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';            // <-- for ngModel
+
+import Fuse from 'fuse.js';
+
+interface AutoCompleteCompleteEvent {
+  originalEvent: Event;
+  query: string;
+}
 
 @Component({
   selector: 'navbar',
-  imports: [],
+  imports: [AutoCompleteModule, ButtonModule, RouterLink, FormsModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })
 export class Navbar {
-  countryCommonNames: any[] = [
-    { country: 'United States', commonMenName: 'John', commonWomenName: 'Mary' },
-    { country: 'Canada', commonMenName: 'John', commonWomenName: 'Mary' },
-    { country: 'Mexico', commonMenName: 'Jose', commonWomenName: 'Maria' },
-    { country: 'Argentina', commonMenName: 'Juan', commonWomenName: 'Maria' },
-    { country: 'Brazil', commonMenName: 'Jose', commonWomenName: 'Maria' },
-    { country: 'Colombia', commonMenName: 'Luis', commonWomenName: 'Ana' },
-    { country: 'Chile', commonMenName: 'Juan', commonWomenName: 'Maria' },
-    { country: 'Peru', commonMenName: 'Jose', commonWomenName: 'Maria' },
-    { country: 'England', commonMenName: 'John', commonWomenName: 'Mary' },
-    { country: 'Scotland', commonMenName: 'James', commonWomenName: 'Isla' },
-    { country: 'Wales', commonMenName: 'Dylan', commonWomenName: 'Megan' },
-    { country: 'Ireland', commonMenName: 'Patrick', commonWomenName: 'Mary' },
-    { country: 'Spain', commonMenName: 'Jose', commonWomenName: 'Maria' },
-    { country: 'Portugal', commonMenName: 'Joao', commonWomenName: 'Ana' },
-    { country: 'France', commonMenName: 'Jean', commonWomenName: 'Marie' },
-    { country: 'Germany', commonMenName: 'Michael', commonWomenName: 'Anna' },
-    { country: 'Netherlands', commonMenName: 'Jan', commonWomenName: 'Maria' },
-    { country: 'Italy', commonMenName: 'Francesco', commonWomenName: 'Giulia' },
-    { country: 'Sweden', commonMenName: 'Erik', commonWomenName: 'Anna' },
-    { country: 'Norway', commonMenName: 'Ole', commonWomenName: 'Anne' },
-    { country: 'Denmark', commonMenName: 'Lars', commonWomenName: 'Anne' },
-    { country: 'Poland', commonMenName: 'Michal', commonWomenName: 'Agnieszka' },
-    { country: 'Romania', commonMenName: 'Andrei', commonWomenName: 'Elena' },
-    { country: 'Greece', commonMenName: 'Georgios', commonWomenName: 'Maria' },
-    { country: 'Turkey', commonMenName: 'Mehmet', commonWomenName: 'Fatma' },
-    { country: 'Russia', commonMenName: 'Sergey', commonWomenName: 'Elena' },
-    { country: 'Ukraine', commonMenName: 'Bohdan', commonWomenName: 'Sofyia' },
-    { country: 'Hungary', commonMenName: 'Laszlo', commonWomenName: 'Eva' },
-    { country: 'Czech Republic', commonMenName: 'Jan', commonWomenName: 'Jana' },
-    { country: 'Austria', commonMenName: 'Franz', commonWomenName: 'Elisabeth' },
-    { country: 'Switzerland', commonMenName: 'Peter', commonWomenName: 'Ruth' },
-    { country: 'Belgium', commonMenName: 'Marc', commonWomenName: 'Marie' },
-    { country: 'Serbia', commonMenName: 'Nikola', commonWomenName: 'Milica' },
-    { country: 'Croatia', commonMenName: 'Ivan', commonWomenName: 'Ana' },
-    { country: 'Bulgaria', commonMenName: 'Georgi', commonWomenName: 'Mariya' },
-    { country: 'Japan', commonMenName: 'Hiroshi', commonWomenName: 'Yoko' },
-    { country: 'China', commonMenName: 'Wei', commonWomenName: 'Mei' },
-    { country: 'India', commonMenName: 'Rahul', commonWomenName: 'Priya' },
-    { country: 'Indonesia', commonMenName: 'Agus', commonWomenName: 'Sri' },
-    { country: 'Philippines', commonMenName: 'John', commonWomenName: 'Maria' },
-    { country: 'Vietnam', commonMenName: 'Hung', commonWomenName: 'Trang' },
-    { country: 'Thailand', commonMenName: 'Somchai', commonWomenName: 'Siriporn' },
-    { country: 'Malaysia', commonMenName: 'Mohamed', commonWomenName: 'Siti' },
-    { country: 'Saudi Arabia', commonMenName: 'Abdullah', commonWomenName: 'Fatimah' },
-    { country: 'Iran', commonMenName: 'Mohammad', commonWomenName: 'Zahra' },
-    { country: 'Pakistan', commonMenName: 'Muhammad', commonWomenName: 'Ayesha' },
-    { country: 'Israel', commonMenName: 'David', commonWomenName: 'Sarah' },
-    { country: 'Australia', commonMenName: 'Jack', commonWomenName: 'Olivia' },
-    { country: 'New Zealand', commonMenName: 'Noah', commonWomenName: 'Isla' },
-    { country: 'Nigeria', commonMenName: 'Musa', commonWomenName: 'Zainab' },
-    { country: 'South Africa', commonMenName: 'Sipho', commonWomenName: 'Lindiwe' },
-    { country: 'Egypt', commonMenName: 'Mohamed', commonWomenName: 'Mona' },
-    { country: 'Kenya', commonMenName: 'John', commonWomenName: 'Mary' },
-    { country: 'Ghana', commonMenName: 'Emmanuel', commonWomenName: 'Esther' },
-    { country: 'Ethiopia', commonMenName: 'Tadesse', commonWomenName: 'Rahel' },
-    { country: 'Tanzania', commonMenName: 'Juma', commonWomenName: 'Neema' },
-    { country: 'Morocco', commonMenName: 'Youssef', commonWomenName: 'Amina' },
-    { country: 'Algeria', commonMenName: 'Youcef', commonWomenName: 'Aicha' },
-    { country: 'Uganda', commonMenName: 'John', commonWomenName: 'Rose' },
-    { country: 'Cameroon', commonMenName: 'Jean', commonWomenName: 'Marie' },
-  ];
+  constructor(private router: Router) {}
+  search: any;
+  suggestions: any[] = [];
+  filteredSuggestions: any[] = [];
+  searchSuggestions(event: AutoCompleteCompleteEvent) {
+    this.suggestions = [
+      { name: 'login', route: '/' },
+      { name: 'login with steam', route: '/' },
+      { name: 'authenticate', route: '/' },
+      { name: 'get into steam', route: '/' },
+      { name: 'Chats', route: '/chat' },
+      { name: 'talk to AI', route: '/chat' },
+      { name: 'recommend games', route: '/chat' },
+      { name: 'recommend me games', route: '/chat' },
+      { name: 'chatbot', route: '/chat' },
+      { name: 'talk to chatbot', route: '/chat' },
+      { name: 'FAQ', route: '/faq' },
+      { name: 'How can I create an account?', route: '/faq' },
+      { name: 'How can I recover my password?', route: '/faq' },
+      { name: 'Can I change my username?', route: '/faq' },
+    ];
+    const fuse = new Fuse(this.suggestions, {
+      keys: ['name'],
+      threshold: 0.5,
+    });
+    this.filteredSuggestions = fuse.search(event.query).map((result) => result.item);
+  }
+  selectItem(event: AutoCompleteSelectEvent) {
+    const selectedItem = event.value as any;
+    const routeChosen = selectedItem.route;
+    this.router.navigateByUrl(routeChosen);
+    this.search = '';
+  }
 }
+
