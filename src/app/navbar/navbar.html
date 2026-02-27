@@ -1,18 +1,32 @@
 <nav class="navbar">
-    <div class="navbar-container">
-      <div class="logo-link" routerLink="/">
-        <img src="LG_monogram_badge_centered.png" alt="logo" class="logo" title="home" />
-      </div>
-      <div class="search-container">
-        <p-autocomplete  [forceSelection]="true" (onSelect)="selectItem($event)"  [(ngModel)]="search"
-          [suggestions]="filteredSuggestions" (completeMethod)="searchSuggestions($event)" optionLabel="name"
-          placeholder="What can we help you find?" class="custom-autocomplete" />
-        <p-button variant="text" icon="pi pi-search" class="search-icon" severity="secondary" aria-label="Search" />
-      </div>
-      <div class="nav-links">
-        <div class="nav-item" routerLink="/">Home</div>
-        <div class="nav-item" routerLink="/faq">FAQ</div>
-        <div  class="nav-item" routerLink="/chat">Chats</div>
-      </div>
+  <div class="navbar-container">
+    <div class="logo-area">
+      <img src="LG_monogram_badge_centered.png" alt="Logo" class="logo" />
     </div>
-  </nav>
+    <div class="search-area">
+      <p-autocomplete
+        [(ngModel)]="searchValue"
+        [suggestions]="fiteredSuggestions"
+        (completeMethod)="completeSearch($event)"
+        placeholder="Search here to go to a page"
+        optionLabel="name"
+        class="custom-autocomplete"
+        optionValue="route"
+        [forceSelection]="true"
+        (onSelect)="selectItem($event)"
+      />
+      <p-button 
+      variant="text"
+        icon="pi pi-search"
+        severity="secondary"
+        class="search-icon" 
+        ariaLabel="Search"
+      ></p-button>
+    </div>
+    <div class="links-area">
+      @for (item of items; track $index) {
+        <div class="nav-item" [routerLink]="item.route">{{ item.name }}</div>
+      }
+    </div>
+  </div>
+</nav>
