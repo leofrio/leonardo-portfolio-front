@@ -32,7 +32,32 @@ $shadow-navbar: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
   }
 }
+.nav-item {
+  cursor: pointer;
+}
 
+.ex-link-with-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: $color-white;
+  text-decoration: none;
+  // font-weight: 500; 
+  cursor: pointer;
+  .ex-b-icon {
+    margin-right: 2px;
+  } 
+
+  .ex-a-icon {
+    font-size: 0.65rem;
+    margin-bottom: 6px;
+    margin-left: 2px;
+  } 
+
+  &:hover { 
+    text-decoration: underline;
+  }
+}
 .logo-area {
   width: 20%;
   .logo {
@@ -43,7 +68,7 @@ $shadow-navbar: 0 2px 4px rgba(0, 0, 0, 0.1);
 .search-area {
   display: flex;
   align-items: center;
-  width: 55%;
+  width: 45%;
 }
 .custom-autocomplete {
   width: 100%;
@@ -57,12 +82,13 @@ $shadow-navbar: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 8px;
     &::placeholder {
       color: $color-search-bar-placeholder;
-    }
+    } 
+
   }
 }
 .links-area {
   display: flex;
-//   gap: 30px;
-  width: 25%;
-  justify-content: space-around; 
+    // gap: 30px;
+  width: 35%;
+  justify-content: space-between;
 }

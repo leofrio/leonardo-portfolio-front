@@ -1,0 +1,51 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="logo-area">
+      <img (click)="goToHome()" src="LG_monogram_badge_centered.png" alt="Logo" class="logo" />
+    </div>
+    <div class="search-area">
+      <p-autocomplete
+        [(ngModel)]="searchValue"
+        [suggestions]="fiteredSuggestions"
+        (completeMethod)="completeSearch($event)"
+        placeholder="Search here to go to a page"
+        optionLabel="name"
+        class="custom-autocomplete"
+        optionValue="route"
+        [forceSelection]="true"
+        (onSelect)="selectItem($event)"
+      />
+      <p-button 
+      variant="text"
+        icon="pi pi-search"
+        severity="secondary"
+        class="search-icon" 
+        ariaLabel="Search"
+      ></p-button>
+    </div>
+    <div class="links-area">
+      @for (item of items; track $index) {
+        <div class="nav-item" [routerLink]="item.route">{{ item.name }}</div>
+      } 
+      @for (exLink of externalLinks; track $index) {
+        <div class="ex-link-with-icon" (click) ="openExternalLink(exLink.url)">
+          <div class="ex-b-icon" >  
+            @if (exLink.isLayered) {
+            <fa-layers>
+              <fa-icon [inverse]="exLink.isInversedMask" [style]="exLink.additionalStyleMask"    [icon]="exLink.mask"></fa-icon>
+              <fa-icon [inverse]="exLink.isInversedIcon"  [transform]="exLink.transform"  [icon]="exLink.icon"></fa-icon>
+            </fa-layers> 
+            }@else {
+              <fa-icon   size="sm" [icon]="exLink.icon"></fa-icon>
+            }
+            
+          </div> 
+          <span class="ex-link-name">{{exLink.name}}</span> 
+          <div class="ex-a-icon" >
+            <fa-icon   [icon]="fontaIcons.solid.faArrowUpRightFromSquare"></fa-icon>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</nav>
