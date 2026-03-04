@@ -1,8 +1,7 @@
-@import '../node_modules/primeicons/primeicons.css';
 $primary-color: linear-gradient(to right, #1A2A3A, #154255); 
 body { 
     background:$primary-color ; 
-    // min-height: 100vh; 
-    // min-width: 100vw;
+    min-height: 100vh; 
+    min-width: 100vw;
     margin: 0;
 } 

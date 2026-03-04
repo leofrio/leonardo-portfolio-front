@@ -1,0 +1,20 @@
+.main-footer {
+    margin-top: auto;
+    background-color: black;
+    padding: 20px 0;
+    color: white;
+} 
+.footer-header {
+    text-align: center;
+}
+.footer-location-icon {
+    color:rgb(255, 16, 16) ;
+    margin-right:1px
+} 
+.footer-divider {
+    margin: 1% auto;
+    width: 50%;
+    &::before {
+        border-color: hsl(213, 35%, 26%) !important;   
+    }
+  }

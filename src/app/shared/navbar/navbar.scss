@@ -90,5 +90,6 @@ $shadow-navbar: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
     // gap: 30px;
   width: 35%;
-  justify-content: space-between;
+  justify-content: space-between; 
+  flex-wrap: wrap;
 }
