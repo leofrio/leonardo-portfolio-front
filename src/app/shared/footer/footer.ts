@@ -12,6 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 })
 export class Footer {
   readonly fontaIcons = fontaIcons;
+  email = 'leofrio1@gmail.com';
   externalLinks = [
     {
       name: 'GitHub',
@@ -59,4 +60,12 @@ export class Footer {
       size: 'sm' as SizeProp,
     },
   ];
+  // async copyEmail() {
+  //   try {
+  //     await navigator.clipboard.writeText(this.email);
+      
+  //   } catch {
+      
+  //   }
+  // }
 }

@@ -1,8 +1,9 @@
-import { faArrowUpRightFromSquare,faCircleInfo,faDownload,faFile,faFileArrowDown,faFileLines,faHouse, faInfo,faLocationDot,faQuestion,faQuestionCircle, faSquare } from '@fortawesome/free-solid-svg-icons';  
+import { faArrowUpRightFromSquare,faCircleInfo,faCopy,faDownload,faFile,faFileArrowDown,faFileLines,faHouse, faInfo,faLocationDot,faQuestion,faQuestionCircle, faSquare } from '@fortawesome/free-solid-svg-icons';  
 import {
   faQuestionCircle as regularFaQuestionCircle,
   faFile as regularFaFile,
   faFileLines as regularFaFileLines,
+  faCopy as regularFaCopy
 } from '@fortawesome/free-regular-svg-icons';
 import { faGithub,faLinkedin,faLinkedinIn, faSquareLinkedin } from '@fortawesome/free-brands-svg-icons';
 
@@ -17,12 +18,14 @@ export const fontaIcons = {
     faFile, 
     faFileArrowDown, 
     faDownload, 
-    faFileLines
+    faFileLines,
+    faCopy
   },
   regular: {
     'faQuestionCircle':regularFaQuestionCircle, 
     'faFile':regularFaFile,
-    'faFileLines':regularFaFileLines
+    'faFileLines':regularFaFileLines,
+    'faCopy':regularFaCopy
   },
   brands: {
     faGithub,

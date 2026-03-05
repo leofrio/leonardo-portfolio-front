@@ -13,7 +13,13 @@
   <div class="footer-content">
     <div class="footer-contact">
       <h3>Contact</h3>
-      <p>Email: <a href="mailto:leofrio1@gmail.com">leofrio1@gmail.com</a></p>
+      <div class="ex-link-with-icon">
+        <span class="ex-link-label">Email:</span>
+        <span class="ex-link-name">&nbsp;{{  email }}</span>
+        <div class="ex-a-icon hover-only">
+          <fa-icon [icon]="fontaIcons.solid.faCopy"></fa-icon>
+        </div>
+      </div>
       <p>Phone: <a href="tel:+5585986007511">+55 85 986007511</a></p>
     </div>
     <div class="footer-links">
@@ -45,15 +51,15 @@
             } @else {
               <i [class]="eLink.icon" [style]="eLink.additionalStyleIcon"></i>
             }
-          </div> 
-          <span class="ex-link-name">{{eLink.name}}</span> 
+          </div>
+          <span class="ex-link-name">{{ eLink.name }}</span>
           <div class="ex-a-icon">
             @if (eLink.type == 'link') {
-                <fa-icon [icon]="fontaIcons.solid.faArrowUpRightFromSquare"></fa-icon>
+              <fa-icon [icon]="fontaIcons.solid.faArrowUpRightFromSquare"></fa-icon>
             } @else {
-                <fa-icon [icon]="fontaIcons.solid.faDownload"></fa-icon>
+              <fa-icon [icon]="fontaIcons.solid.faDownload"></fa-icon>
             }
-          </div> 
+          </div>
         </div>
       }
     </div>
