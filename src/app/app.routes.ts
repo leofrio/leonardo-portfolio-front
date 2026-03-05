@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-import { Faq } from './pages/faq/faq';
-import { Chatbot } from './pages/chatbot/chatbot';
+import { Home } from './components/pages/home/home';
+import { Faq } from './components/pages/faq/faq';
+import { Chatbot } from './components/pages/chatbot/chatbot';
 export const routes: Routes = [
   {
     path: '',

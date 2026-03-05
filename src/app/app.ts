@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from "./shared/navbar/navbar"; 
+import { Navbar } from "./components/shared/navbar/navbar"; 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { Footer } from './shared/footer/footer';
+import { Footer } from './components/shared/footer/footer';
 
 
 @Component({
