@@ -13,7 +13,7 @@
   <div class="footer-content">
     <div class="footer-contact">
       <h3>Contact</h3>
-      <div class="ex-link-with-icon">
+      <div class="ex-link-with-icon" (click)="copyEmail()">
         <span class="ex-link-label">Email:</span>
         <span class="ex-link-name">&nbsp;{{  email }}</span>
         <div class="ex-a-icon hover-only">
@@ -25,7 +25,7 @@
     <div class="footer-links">
       <h3>Links</h3>
       @for (eLink of externalLinks; track $index) {
-        <div class="ex-link-with-icon">
+        <div class="ex-link-with-icon" (click)="open_download_external_link(eLink.url,eLink.type)">
           <div class="ex-b-icon">
             @if (eLink.iconType === 'fa') {
               @if (eLink.isLayered) {

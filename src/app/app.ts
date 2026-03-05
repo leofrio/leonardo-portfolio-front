@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { Navbar } from "./components/shared/navbar/navbar"; 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Footer } from './components/shared/footer/footer';
+import { ToastModule } from 'primeng/toast';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar,FontAwesomeModule,Footer],
+  imports: [RouterOutlet, Navbar,FontAwesomeModule,Footer,ToastModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

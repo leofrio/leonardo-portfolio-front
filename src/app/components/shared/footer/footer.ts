@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DividerModule } from 'primeng/divider';
-import { FaIconComponent, SizeProp } from "@fortawesome/angular-fontawesome";
-import { fontaIcons } from '../static/fontaIcons';
+import { FaIconComponent, SizeProp } from '@fortawesome/angular-fontawesome';
+import { fontaIcons } from '../../../static/fontaIcons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ToastService } from '../../../services/toast-service';
 
 @Component({
   selector: 'footer',
@@ -12,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 })
 export class Footer {
   readonly fontaIcons = fontaIcons;
+  private readonly toastrService = inject(ToastService);
   email = 'leofrio1@gmail.com';
   externalLinks = [
     {
@@ -60,12 +62,30 @@ export class Footer {
       size: 'sm' as SizeProp,
     },
   ];
-  // async copyEmail() {
-  //   try {
-  //     await navigator.clipboard.writeText(this.email);
-      
-  //   } catch {
-      
-  //   }
-  // }
+  copyEmail() {
+    navigator.clipboard
+      .writeText(this.email)
+      .then(() => {
+        this.toastrService.info('Email copied to clipboard!');
+      })
+      .catch(() => {
+        this.toastrService.error('Failed to copy email.');
+      });
+  }
+  downloadPdf(file_path:string): void {
+    const link = document.createElement('a');
+    link.href = file_path;
+    link.download = file_path; 
+    link.click();
+  }
+  openExternalLink(eLink: string) {
+    window.open(eLink, '_blank');
+  }
+  open_download_external_link(url: string, type: string) {
+    if (type === 'link') {
+      this.openExternalLink(url);
+    } else if (type === 'download') {
+      this.downloadPdf(url);
+    }
+  }
 }

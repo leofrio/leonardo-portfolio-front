@@ -9,7 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // <-- for ngModel
 
 import Fuse from 'fuse.js';
-import { fontaIcons } from '../static/fontaIcons';
+import { fontaIcons } from '../../../static/fontaIcons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @Component({
   selector: 'navbar',
