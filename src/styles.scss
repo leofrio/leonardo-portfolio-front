@@ -1,7 +1,7 @@
+@import '../public/styles/glender-icon.scss';
 $primary-color: linear-gradient(to right, #1A2A3A, #154255); 
 body { 
     background:$primary-color ; 
-    min-height: 100vh; 
-    min-width: 100vw;
+    width:100%;
     margin: 0;
 } 
