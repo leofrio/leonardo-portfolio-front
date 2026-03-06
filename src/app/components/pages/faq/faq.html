@@ -1,6 +1,74 @@
-<div class="main-faq">
-    <div class="faq-title">
-        <h1>Frequently Asked Questions(F.A.Q.)</h1>
-        <p>Here are some common questions and answers about our product.</p>
+<main class="faq-page">
+  <section
+    class="faq-hero"
+    pAnimateOnScroll
+    enterClass="fadein animation-duration-1000 animation-ease-out animation-fill-both"
+  >
+    <div class="hero-orb orb-a"></div>
+    <div class="hero-orb orb-b"></div>
+    <div class="hero-orb orb-c"></div>
+
+    <p class="faq-kicker">Support</p>
+    <h1>
+      <fa-icon [icon]="fontaIcons.regular.faQuestionCircle"></fa-icon>
+      Frequently Asked Questions
+    </h1>
+    <p class="faq-intro">
+      Everything you usually need before reaching out: project context, technologies, contact
+      channels, and collaboration details.
+    </p>
+
+    <div class="faq-metrics">
+      <div class="faq-metric-chip">
+        <i class="pi pi-list"></i>
+        <span>{{ sections.length }} Sections</span>
+      </div>
+      <div class="faq-metric-chip">
+        <i class="pi pi-question-circle"></i>
+        <span>{{ totalQuestions }} Questions</span>
+      </div>
+      <div class="faq-metric-chip">
+        <i class="pi pi-bolt"></i>
+        <span>Fast Answers</span>
+      </div>
     </div>
-</div>
+  </section>
+
+  <section class="faq-grid">
+    @for (section of sections; track section.id) {
+      <p-card
+        pAnimateOnScroll
+        enterClass="fadeinup animation-duration-1000 animation-ease-out animation-fill-both"
+        class="faq-card"
+      >
+        <div class="faq-card-head">
+          <div class="faq-title-wrap">
+            <span class="faq-section-icon">
+              <fa-icon [icon]="section.icon"></fa-icon>
+            </span>
+            <h2>{{ section.title }}</h2>
+          </div>
+          <p-tag [value]="section.items.length + ' Questions'" [severity]="section.tagSeverity"></p-tag>
+        </div>
+
+        <p class="faq-section-description">{{ section.description }}</p>
+
+        <p-accordion [multiple]="true" [value]="[section.id + '-0']" class="faq-accordion">
+          @for (item of section.items; track item.question; let i = $index) {
+            <p-accordion-panel [value]="section.id + '-' + i">
+              <p-accordion-header>
+                <span class="question-head">
+                  <i class="pi pi-question-circle"></i>
+                  {{ item.question }}
+                </span>
+              </p-accordion-header>
+              <p-accordion-content>
+                <p class="faq-answer">{{ item.answer }}</p>
+              </p-accordion-content>
+            </p-accordion-panel>
+          }
+        </p-accordion>
+      </p-card>
+    }
+  </section>
+</main>
