@@ -2,14 +2,25 @@ import { Component } from '@angular/core';
 import { AccordionModule } from 'primeng/accordion';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
-import { AnimateOnScrollModule } from 'primeng/animateonscroll';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { fontaIcons } from '../../../static/fontaIcons';
 
+type exLinkType = 'download' | 'link';
 interface FaqItem {
   question: string;
   answer: string;
+  showSourceActions?: boolean;
+  linkActionType?: exLinkType;
+  linkToType?: FooterSection;
+  linkToIconType?: 'fa' | 'custom';
+  linkToCustomIcon?: string;
+  linkToFaIcon?: IconDefinition;
+  linkToText?: string;
+  footerId?: FooterSection;
+  showFooterScroll?: boolean;
+  footerScrollToType?: FooterSection;
+  footerScrollToText?: string;
 }
 
 interface FaqSection {
@@ -19,90 +30,194 @@ interface FaqSection {
   tagSeverity: 'info' | 'success' | 'warn';
   icon: IconDefinition;
   items: FaqItem[];
-}
+} 
+type FooterSection =
+  | 'github'
+  | 'cv'
+  | 'contact'
+  | 'links'
+  | 'email'
+  | 'number'
+  | 'linkedin'
+  | 'glender'; 
+
+  
 
 @Component({
   selector: 'app-faq',
-  imports: [AccordionModule, CardModule, TagModule, AnimateOnScrollModule, FontAwesomeModule],
+  imports: [AccordionModule, CardModule, TagModule, FontAwesomeModule],
   templateUrl: './faq.html',
   styleUrl: './faq.scss',
 })
 export class Faq {
   readonly fontaIcons = fontaIcons;
-  readonly totalQuestions = 9;
+  readonly githubRepoUrl = 'https://github.com/leofrio/leonardo-portfolio-front';
+  readonly footerTypeToSelector: Record<FooterSection, string> = {
+    github: '#github',
+    linkedin: '#linkedin',
+    glender: '#glender',
+    cv: '#cv',
+    contact: '.footer-contact',
+    links: '.footer-links',
+    email: '#email-link',
+    number: '#phone-number',
+  };
+  get totalQuestions(): number {
+    return this.sections.reduce((sum, section) => sum + section.items.length, 0);
+  }
 
   readonly sections: FaqSection[] = [
     {
       id: 'general',
       title: 'General',
-      description: 'Quick context about the portfolio and who this content is for.',
+      description: 'Quick context about my portfolio and who this page is designed for.',
       tagSeverity: 'info',
       icon: fontaIcons.solid.faCircleInfo,
       items: [
         {
           question: 'What is this portfolio for?',
           answer:
-            'This portfolio highlights my projects,experience, skills, and contact channels in one place. It is designed to make technical background and recent work easy to explore.',
+            'This portfolio highlights my projects, experience, skills, and contact channels in one place. I designed it so you can quickly understand what I build and how I work.For even more information on my experience go to my linkedin or cv',
+          showSourceActions: true,
+          linkToType: 'linkedin', 
+          linkActionType: 'link',
+          linkToIconType: 'fa',
+          linkToFaIcon: fontaIcons.brands.faLinkedin,
+          linkToText: 'Find out more at my Linkedin!',
+          footerId: 'cv',
+          showFooterScroll: true,
+          footerScrollToType: 'cv',
+          footerScrollToText: 'Or jump to the CV download below!',
         },
         {
           question: 'Who should use this page?',
           answer:
-            'Recruiters, engineering managers, and collaborators can use this page to quickly understand stack preferences, project direction, and how to get in touch.',
+            'Recruiters, engineering managers, and potential collaborators can use this page to quickly evaluate my stack preferences, project direction, and how to contact me.',
         },
         {
           question: 'Is the content updated frequently?',
           answer:
-            'Yes. Project links, CV, and profile details are reviewed and updated as new work is shipped or professional information changes.',
+            'Yes. I keep project links, my CV, and profile details updated as I ship new work or change availability.',
+          showSourceActions: true,
+          footerId: 'links',
+          showFooterScroll: true,
+          footerScrollToType: 'links',
+          footerScrollToText: 'Scroll to links',
+        },
+        {
+          question: 'What is the Glender link at the end of the page?',
+          answer:
+            'The Glender link at the bottom of the page leads to my 2024 Computer Science thesis project at the University of Fortaleza (UNIFOR). Glender is a chatbot that connects to a user’s Steam account and recommends games based on their requests, while also taking into account their previously and recently played titles.',
+          showSourceActions: true, 
+          linkActionType: 'link',
+          linkToType: 'glender',
+          linkToIconType: 'custom',
+          linkToCustomIcon: 'glender-icon',
+          linkToText: 'Go to the Glender project page',
+          footerId: 'glender',
+          showFooterScroll: true,
+          footerScrollToType: 'glender',
+          footerScrollToText: 'Or scroll to the Glender link at the bottom of the page',
         },
       ],
     },
     {
       id: 'projects',
       title: 'Projects & Stack',
-      description: 'Main technologies, source code visibility, and technical walkthrough details.',
+      description:
+        'Main technologies I use, source code visibility, and technical walkthrough details.',
       tagSeverity: 'success',
       icon: fontaIcons.solid.faFileLines,
       items: [
         {
           question: 'Which technologies were used to make this site?',
           answer:
-            'this was built with Angular for the frontend, using PrimeNG for UI components and FontAwesome for icons. The backend,mostly used for the chatbot section, is made using kotlin and OpenAI API. this site has its frontend hosted on vercel, and the backend on Railway.',
+            'I built this with Angular on the frontend, PrimeNG for UI components, and FontAwesome for icons. The backend (mainly for the chatbot) uses Kotlin and the OpenAI API. The frontend is hosted on Vercel and the backend is hosted on Railway.',
+            showSourceActions: true,
+            linkActionType: 'link',
+            linkToType: 'github',
+            linkToIconType: 'fa',
+            linkToFaIcon: fontaIcons.brands.faGithub,
+            linkToText: 'Check out the frontend source code on GitHub!',
         },
         {
           question: 'Can i check out the source for this project?',
           answer:
-            'Of Course you can! You can click the github link in the footer on in the navbar to see the frontend code. the backend code is sadly not avaliable to the public due to the api keys being stored there, but if you want to see it, just reach out and ask for it! ',
+            'Yes. You can access my frontend source code publicly on GitHub. My backend repository is private because it contains sensitive environment configuration, but I can provide architecture details if you ask.',
+          showSourceActions: true,
+          linkActionType: 'link',
+          linkToType: 'github',
+          linkToIconType: 'fa',
+          linkToFaIcon: fontaIcons.brands.faGithub,
+          linkToText: 'Check out the frontend source code on GitHub!',
+          footerId: 'links',
+          showFooterScroll: true,
+          footerScrollToType: 'links',
+          footerScrollToText: 'checkout other projects the links below!',
         },
         {
           question: 'Can I request a technical walkthrough?',
           answer:
-            'Yes. If you are evaluating a project, you can ask for architecture choices, tradeoffs, deployment notes, and possible next iteration plans.',
+            'Yes. If you are evaluating a project, I can walk you through architecture choices, tradeoffs, deployment notes, and next-step ideas.',
+            showSourceActions: true,
+            footerId: 'contact',
+            showFooterScroll: true,
+            footerScrollToType: 'contact',
+            footerScrollToText: 'Contact me to request a walkthrough!',
         },
       ],
     },
     {
       id: 'contact',
       title: 'Contact & Availability',
-      description: 'How to reach out and what to include when sharing an opportunity.',
+      description: 'How to reach me and what to include when sharing an opportunity.',
       tagSeverity: 'warn',
       icon: fontaIcons.solid.faLocationDot,
       items: [
         {
-          question: 'How can I contact Leonardo directly?',
+          question: 'How can I contact you directly?',
           answer:
-            'Use the email shown in the footer, or reach out through LinkedIn. Email is best for opportunities requiring technical context and timelines.',
+            'You can reach me through the email shown in the footer or via LinkedIn. Email is usually the best option for opportunities with technical context and timelines.',
+            showSourceActions: true, 
+            linkActionType: 'link',
+            linkToType: 'linkedin',
+            linkToIconType: 'fa',
+            linkToFaIcon: fontaIcons.brands.faLinkedin, 
+            linkToText: 'Find my email address in the footer below!',
+            footerId: 'email',
+            showFooterScroll: true,
+            footerScrollToType: 'email',
+            footerScrollToText: 'Scroll to my email address below',
         },
         {
-          question: 'What kind of work is Leonardo currently available for?',
-          answer:
-            'Currently i am avaliable only for remote work opportunities.',
+          question: 'What kind of work are you currently available for?',
+          answer: 'I am currently available for remote work opportunities.',
         },
         {
           question: 'Can I download the CV from this site?',
           answer:
-            'Yes. The footer includes a direct CV download action so you can keep an offline copy.',
+            'Yes. I provide a direct CV download option in the footer so you can keep an offline copy.',
         },
       ],
     },
   ];
+
+  openGithubRepository(): void {
+    window.open(this.githubRepoUrl, '_blank');
+  }
+
+  scrollToFooterLinks(section: FooterSection = 'links'): void {
+    const chosenSelector = this.footerTypeToSelector[section];
+    const footerLinks = document.querySelector(
+      `.main-footer ${chosenSelector}`,
+    ) as HTMLElement | null;
+    if (!footerLinks) {
+      return;
+    }
+
+    footerLinks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    footerLinks.classList.remove('footer-links-highlight');
+    setTimeout(() => footerLinks.classList.add('footer-links-highlight'), 120);
+    setTimeout(() => footerLinks.classList.remove('footer-links-highlight'), 1700);
+  }
 }

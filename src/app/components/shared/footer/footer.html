@@ -10,22 +10,22 @@
     </p>
   </div>
   <p-divider class="footer-divider"></p-divider>
-  <div class="footer-content">
+  <div class="footer-content" >
     <div class="footer-contact">
       <h3 class="footer-section-title">Contact</h3>
-      <div class="ex-link-with-icon" (click)="copyEmail()">
+      <div class="ex-link-with-icon" id="email-link"  (click)="copyEmail()">
         <span class="ex-link-label">Email:</span>
         <span class="ex-link-name">&nbsp;{{  email }}</span>
         <div class="ex-a-icon hover-only">
           <fa-icon [icon]="fontaIcons.solid.faCopy"></fa-icon>
         </div>
       </div>
-      <p>Phone: <a href="tel:+5585986007511">+55 85 986007511</a></p>
+      <p id="phone-number">Phone: <a href="tel:+5585986007511">+55 85 986007511</a></p>
     </div>
     <div class="footer-links">
       <h3 class="footer-section-title">Links</h3>
       @for (eLink of externalLinks; track $index) {
-        <div class="ex-link-with-icon" (click)="open_download_external_link(eLink.url,eLink.type)">
+        <div class="ex-link-with-icon" [id]="eLink.id" (click)="open_download_external_link(eLink.url,eLink.type)">
           <div class="ex-b-icon">
             @if (eLink.iconType === 'fa') {
               @if (eLink.isLayered) {

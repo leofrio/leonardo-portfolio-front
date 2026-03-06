@@ -21,6 +21,7 @@ export class Footer {
       url: 'https://github.com/leofrio/leonardo-portfolio-front',
       isLayered: false,
       icon: fontaIcons.brands.faGithub,
+      id: 'github',
       type: 'link',
       iconType: 'fa',
       size: 'sm' as SizeProp,
@@ -30,6 +31,7 @@ export class Footer {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/leonardo-pontes-gaspar-7aabab248/',
       isLayered: true,
+      id: 'linkedin',
       icon: fontaIcons.brands.faLinkedinIn,
       mask: fontaIcons.solid.faSquare,
       isInversedIcon: true,
@@ -45,6 +47,7 @@ export class Footer {
       name: 'Glender',
       url: 'https://github.com/leofrio/leonardo-portfolio-front',
       isLayered: false,
+      id: 'glender',
       icon: 'glender-icon fa-sm',
       additionalStyleIcon: 'color:gold;margin-left:3px;margin-right:2px',
       type: 'link',
@@ -55,6 +58,7 @@ export class Footer {
       name: 'CV',
       url: 'leonardo_gaspar_cv_2026_v4.pdf',
       isLayered: false,
+      id: 'cv',
       icon: fontaIcons.regular.faFileLines,
       additionalStyleIcon: 'color:red;margin-left:2px',
       type: 'download',
@@ -72,10 +76,10 @@ export class Footer {
         this.toastrService.error('Failed to copy email.');
       });
   }
-  downloadPdf(file_path:string): void {
+  downloadPdf(file_path: string): void {
     const link = document.createElement('a');
     link.href = file_path;
-    link.download = file_path; 
+    link.download = file_path;
     link.click();
   }
   openExternalLink(eLink: string) {

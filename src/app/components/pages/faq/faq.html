@@ -1,9 +1,5 @@
 <main class="faq-page">
-  <section
-    class="faq-hero"
-    pAnimateOnScroll
-    enterClass="fadein animation-duration-1000 animation-ease-out animation-fill-both"
-  >
+  <section class="faq-hero load-in-fade">
     <div class="hero-orb orb-a"></div>
     <div class="hero-orb orb-b"></div>
     <div class="hero-orb orb-c"></div>
@@ -36,11 +32,7 @@
 
   <section class="faq-grid">
     @for (section of sections; track section.id) {
-      <p-card
-        pAnimateOnScroll
-        enterClass="fadeinup animation-duration-1000 animation-ease-out animation-fill-both"
-        class="faq-card"
-      >
+      <p-card class="load-in-up" styleClass="faq-card">
         <div class="faq-card-head">
           <div class="faq-title-wrap">
             <span class="faq-section-icon">
@@ -64,6 +56,24 @@
               </p-accordion-header>
               <p-accordion-content>
                 <p class="faq-answer">{{ item.answer }}</p>
+                @if (item.showSourceActions) {
+                  <div class="faq-action-row">
+                    @if (item.showGithubAction) {
+                      <button type="button"  class="faq-action-link" (click)="openGithubRepository()">
+                        <fa-icon [icon]="fontaIcons.brands.faGithub"></fa-icon>
+                        <span>Open GitHub repository</span>
+                        <fa-icon [icon]="fontaIcons.solid.faArrowUpRightFromSquare"></fa-icon>
+                      </button>
+                    }
+
+                    @if (item.showjumpToFooterGithubAction) {
+                      <button type="button" class="faq-action-link secondary" (click)="scrollToFooterLinks()">
+                        <fa-icon [icon]="fontaIcons.solid.faArrowDown"></fa-icon>
+                        <span>Jump to footer links</span>
+                      </button>
+                    }
+                  </div>
+                }
               </p-accordion-content>
             </p-accordion-panel>
           }
