@@ -207,7 +207,11 @@
 
   &.secondary {
     border-color: rgba(114, 191, 170, 0.45);
-    background: linear-gradient(130deg, rgba(10, 39, 41, 0.82), rgba(7, 26, 30, 0.93));
+    background: linear-gradient(130deg, rgba(10, 39, 41, 0.82), rgba(7, 26, 30, 0.93)); 
+    &:hover {
+        transform: translateY(1px);
+        border-color:#81D4B3
+    }
   }
 }
 
@@ -237,6 +241,9 @@
 
 :host ::ng-deep .faq-accordion .p-accordionpanel:hover {
   border-color: #4d78a0;
+} 
+:host ::ng-deep .p-accordionpanel-active .p-accordionheader,:host ::ng-deep .p-accordionpanel:hover .p-accordionheader,:host ::ng-deep .p-accordionpanel-active .p-accordionheader {
+    background-color: #2e4561  !important;
 }
 
 :host ::ng-deep .faq-accordion .p-accordionheader {

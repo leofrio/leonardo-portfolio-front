@@ -11,13 +11,14 @@ interface FaqItem {
   question: string;
   answer: string;
   showSourceActions?: boolean;
-  linkActionType?: exLinkType;
+  linkActionType?: exLinkType;  
+  addStyleLink?:string;
+  isLayred?:boolean;
   linkToType?: FooterSection;
   linkToIconType?: 'fa' | 'custom';
   linkToCustomIcon?: string;
   linkToFaIcon?: IconDefinition;
   linkToText?: string;
-  footerId?: FooterSection;
   showFooterScroll?: boolean;
   footerScrollToType?: FooterSection;
   footerScrollToText?: string;
@@ -52,6 +53,12 @@ type FooterSection =
 export class Faq {
   readonly fontaIcons = fontaIcons;
   readonly githubRepoUrl = 'https://github.com/leofrio/leonardo-portfolio-front';
+  readonly typeToUrl: Record<string, string> = {
+    github: 'https://github.com/leofrio/leonardo-portfolio-front',
+    linkedin: 'https://www.linkedin.com/in/leonardo-pontes-gaspar-7aabab248/',
+    glender: 'https://glender-front.vercel.app/home',
+    cv: 'leonardo_gaspar_cv_2026_v4.pdf',
+  };
   readonly footerTypeToSelector: Record<FooterSection, string> = {
     github: '#github',
     linkedin: '#linkedin',
@@ -79,15 +86,14 @@ export class Faq {
           answer:
             'This portfolio highlights my projects, experience, skills, and contact channels in one place. I designed it so you can quickly understand what I build and how I work.For even more information on my experience go to my linkedin or cv',
           showSourceActions: true,
-          linkToType: 'linkedin', 
+          linkToType: 'linkedin',
           linkActionType: 'link',
           linkToIconType: 'fa',
           linkToFaIcon: fontaIcons.brands.faLinkedin,
           linkToText: 'Find out more at my Linkedin!',
-          footerId: 'cv',
           showFooterScroll: true,
           footerScrollToType: 'cv',
-          footerScrollToText: 'Or jump to the CV download below!',
+          footerScrollToText: 'CV link',
         },
         {
           question: 'Who should use this page?',
@@ -99,7 +105,6 @@ export class Faq {
           answer:
             'Yes. I keep project links, my CV, and profile details updated as I ship new work or change availability.',
           showSourceActions: true,
-          footerId: 'links',
           showFooterScroll: true,
           footerScrollToType: 'links',
           footerScrollToText: 'Scroll to links',
@@ -108,13 +113,13 @@ export class Faq {
           question: 'What is the Glender link at the end of the page?',
           answer:
             'The Glender link at the bottom of the page leads to my 2024 Computer Science thesis project at the University of Fortaleza (UNIFOR). Glender is a chatbot that connects to a user’s Steam account and recommends games based on their requests, while also taking into account their previously and recently played titles.',
-          showSourceActions: true, 
-          linkActionType: 'link',
+          showSourceActions: true,
+          linkActionType: 'link', 
+          addStyleLink:"color:gold",
           linkToType: 'glender',
           linkToIconType: 'custom',
           linkToCustomIcon: 'glender-icon',
           linkToText: 'Go to the Glender project page',
-          footerId: 'glender',
           showFooterScroll: true,
           footerScrollToType: 'glender',
           footerScrollToText: 'Or scroll to the Glender link at the bottom of the page',
@@ -133,12 +138,12 @@ export class Faq {
           question: 'Which technologies were used to make this site?',
           answer:
             'I built this with Angular on the frontend, PrimeNG for UI components, and FontAwesome for icons. The backend (mainly for the chatbot) uses Kotlin and the OpenAI API. The frontend is hosted on Vercel and the backend is hosted on Railway.',
-            showSourceActions: true,
-            linkActionType: 'link',
-            linkToType: 'github',
-            linkToIconType: 'fa',
-            linkToFaIcon: fontaIcons.brands.faGithub,
-            linkToText: 'Check out the frontend source code on GitHub!',
+          showSourceActions: true,
+          linkActionType: 'link',
+          linkToType: 'github',
+          linkToIconType: 'fa',
+          linkToFaIcon: fontaIcons.brands.faGithub,
+          linkToText: 'Check out the frontend source code on GitHub!',
         },
         {
           question: 'Can i check out the source for this project?',
@@ -150,20 +155,18 @@ export class Faq {
           linkToIconType: 'fa',
           linkToFaIcon: fontaIcons.brands.faGithub,
           linkToText: 'Check out the frontend source code on GitHub!',
-          footerId: 'links',
           showFooterScroll: true,
           footerScrollToType: 'links',
-          footerScrollToText: 'checkout other projects the links below!',
+          footerScrollToText: 'Check out other projects the links below!',
         },
         {
           question: 'Can I request a technical walkthrough?',
           answer:
             'Yes. If you are evaluating a project, I can walk you through architecture choices, tradeoffs, deployment notes, and next-step ideas.',
-            showSourceActions: true,
-            footerId: 'contact',
-            showFooterScroll: true,
-            footerScrollToType: 'contact',
-            footerScrollToText: 'Contact me to request a walkthrough!',
+          showSourceActions: true,
+          showFooterScroll: true,
+          footerScrollToType: 'contact',
+          footerScrollToText: 'Contact me to request a walkthrough!',
         },
       ],
     },
@@ -178,16 +181,16 @@ export class Faq {
           question: 'How can I contact you directly?',
           answer:
             'You can reach me through the email shown in the footer or via LinkedIn. Email is usually the best option for opportunities with technical context and timelines.',
-            showSourceActions: true, 
-            linkActionType: 'link',
-            linkToType: 'linkedin',
-            linkToIconType: 'fa',
-            linkToFaIcon: fontaIcons.brands.faLinkedin, 
-            linkToText: 'Find my email address in the footer below!',
-            footerId: 'email',
-            showFooterScroll: true,
-            footerScrollToType: 'email',
-            footerScrollToText: 'Scroll to my email address below',
+          showSourceActions: true,
+          linkActionType: 'link',
+          linkToType: 'linkedin', 
+          isLayred:true,
+          linkToIconType: 'fa',
+          linkToFaIcon: fontaIcons.brands.faLinkedin,
+          linkToText: 'Check out my Linkedin!',
+          showFooterScroll: true,
+          footerScrollToType: 'email',
+          footerScrollToText: 'Find my email address in the footer below!',
         },
         {
           question: 'What kind of work are you currently available for?',
@@ -196,7 +199,17 @@ export class Faq {
         {
           question: 'Can I download the CV from this site?',
           answer:
-            'Yes. I provide a direct CV download option in the footer so you can keep an offline copy.',
+            'Yes. I provide a direct CV download option down below, but you can also download it from the link below.',
+          showSourceActions: true,
+          linkActionType: 'download',
+          linkToType: 'cv',
+          addStyleLink:'color:red',
+          linkToIconType: 'fa',
+          linkToFaIcon: fontaIcons.solid.faFileArrowDown,
+          linkToText: 'Download my CV Here!',
+          showFooterScroll: true,
+          footerScrollToType: 'cv',
+          footerScrollToText: 'Or jump to the CV download below!',
         },
       ],
     },
@@ -219,5 +232,22 @@ export class Faq {
     footerLinks.classList.remove('footer-links-highlight');
     setTimeout(() => footerLinks.classList.add('footer-links-highlight'), 120);
     setTimeout(() => footerLinks.classList.remove('footer-links-highlight'), 1700);
+  }
+  downloadPdf(file_path: string): void {
+    const link = document.createElement('a');
+    link.href = file_path;
+    link.download = file_path;
+    link.click();
+  }
+  openExternalLink(eLink: string) {
+    window.open(eLink, '_blank');
+  }
+  open_download_external_link(fDest: string, type: string) {
+    const linkOrDownload = this.typeToUrl[fDest];
+    if (type === 'link') {
+      this.openExternalLink(linkOrDownload);
+    } else if (type === 'download') {
+      this.downloadPdf(linkOrDownload);
+    }
   }
 }

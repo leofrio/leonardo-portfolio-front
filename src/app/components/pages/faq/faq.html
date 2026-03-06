@@ -40,7 +40,10 @@
             </span>
             <h2>{{ section.title }}</h2>
           </div>
-          <p-tag [value]="section.items.length + ' Questions'" [severity]="section.tagSeverity"></p-tag>
+          <p-tag
+            [value]="section.items.length + ' Questions'"
+            [severity]="section.tagSeverity"
+          ></p-tag>
         </div>
 
         <p class="faq-section-description">{{ section.description }}</p>
@@ -58,18 +61,34 @@
                 <p class="faq-answer">{{ item.answer }}</p>
                 @if (item.showSourceActions) {
                   <div class="faq-action-row">
-                    @if (item.showGithubAction) {
-                      <button type="button"  class="faq-action-link" (click)="openGithubRepository()">
-                        <fa-icon [icon]="fontaIcons.brands.faGithub"></fa-icon>
-                        <span>Open GitHub repository</span>
-                        <fa-icon [icon]="fontaIcons.solid.faArrowUpRightFromSquare"></fa-icon>
+                    @if (item.linkToType) {
+                      <button
+                        type="button"
+                        class="faq-action-link"
+                        (click)="open_download_external_link(item.linkToType, item.linkActionType!)"
+                      >
+                        @if (item.linkToIconType === 'fa') {
+                          <fa-icon  [style]="item.addStyleLink ? item.addStyleLink : ''" [icon]="item.linkToFaIcon"></fa-icon>
+                        } @else {
+                          <i [class]="item.linkToCustomIcon"[style]="item.addStyleLink ? item.addStyleLink : ''" ></i>
+                        }
+                        <span>{{ item.linkToText }}</span>
+                        @if (item.linkActionType == 'link') {
+                          <fa-icon [icon]="fontaIcons.solid.faArrowUpRightFromSquare"></fa-icon>
+                        } @else {
+                          <fa-icon [icon]="fontaIcons.solid.faDownload"></fa-icon>
+                        }
                       </button>
                     }
 
-                    @if (item.showjumpToFooterGithubAction) {
-                      <button type="button" class="faq-action-link secondary" (click)="scrollToFooterLinks()">
+                    @if (item.showFooterScroll) {
+                      <button
+                        type="button"
+                        class="faq-action-link secondary"
+                        (click)="scrollToFooterLinks(item.footerScrollToType)"
+                      >
                         <fa-icon [icon]="fontaIcons.solid.faArrowDown"></fa-icon>
-                        <span>Jump to footer links</span>
+                        <span>{{ item.footerScrollToText }}</span>
                       </button>
                     }
                   </div>

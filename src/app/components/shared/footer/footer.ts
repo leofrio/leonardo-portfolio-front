@@ -45,7 +45,7 @@ export class Footer {
     },
     {
       name: 'Glender',
-      url: 'https://github.com/leofrio/leonardo-portfolio-front',
+      url: 'https://glender-front.vercel.app/home',
       isLayered: false,
       id: 'glender',
       icon: 'glender-icon fa-sm',
