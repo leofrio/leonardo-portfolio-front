@@ -4,5 +4,6 @@ $primary-color: linear-gradient(to right, #1A2A3A, #154255);
 body { 
     background:$primary-color ; 
     width:100%;
-    margin: 0;
+    margin: 0; 
+    font-family: 'Inter', sans-serif;
 }

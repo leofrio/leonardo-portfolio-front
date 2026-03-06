@@ -14,7 +14,7 @@
       color: white;
       text-decoration: none;
       // font-weight: 500;
-      cursor:pointer;
+      cursor: pointer;
       .ex-b-icon {
         margin-right: 5px;
         text-align: center;
@@ -33,10 +33,9 @@
         .ex-b-icon,
         .ex-link-name {
           text-decoration: underline;
-          
-        }  
+        }
         .ex-link-label {
-          text-decoration: none; 
+          text-decoration: none;
           cursor: default;
         }
         .hover-only {
@@ -55,10 +54,22 @@
         border-color: hsl(213, 35%, 26%) !important;
       }
     }
+    .footer-title,
+    .footer-section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
     .footer-description {
+      font-family: 'Inter', sans-serif;
       margin-left: 5px;
       margin-right: 5px;
       padding: 5px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 950px;
+      margin: 0 auto 3rem auto;
+      color: #dddddd;
     }
     .footer-content {
       padding: 20px 0;
@@ -74,7 +85,7 @@
         padding-left: 24%;
       }
       .footer-links {
-        h3 {
+        .footer-section-title {
           margin-bottom: 10px;
           margin-left: 4px;
         }

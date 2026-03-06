@@ -12,7 +12,7 @@
   <p-divider class="footer-divider"></p-divider>
   <div class="footer-content">
     <div class="footer-contact">
-      <h3>Contact</h3>
+      <h3 class="footer-section-title">Contact</h3>
       <div class="ex-link-with-icon" (click)="copyEmail()">
         <span class="ex-link-label">Email:</span>
         <span class="ex-link-name">&nbsp;{{  email }}</span>
@@ -23,7 +23,7 @@
       <p>Phone: <a href="tel:+5585986007511">+55 85 986007511</a></p>
     </div>
     <div class="footer-links">
-      <h3>Links</h3>
+      <h3 class="footer-section-title">Links</h3>
       @for (eLink of externalLinks; track $index) {
         <div class="ex-link-with-icon" (click)="open_download_external_link(eLink.url,eLink.type)">
           <div class="ex-b-icon">
