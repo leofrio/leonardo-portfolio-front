@@ -1,6 +1,55 @@
+//imports
 @import '../public/styles/glender-icon.scss';
 @import 'primeflex/primeflex.css';
 
+
+//fonts 
+@font-face {
+  font-family: 'Franklin Gothic LT Pro';
+  src: url('/fonts/franklin-gothic/FranklinGothicLTPro-Bk.318248152074e7c2e.c8483c3961d4eb1e91311cfc8214fcc.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Franklin Gothic LT Pro';
+  src: url('/fonts/franklin-gothic/FranklinGothicLTPro-BkIt.3925f3d63847b1b.b01f214760b83e142adfe434fd07284.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Franklin Gothic LT Pro';
+  src: url('/fonts/franklin-gothic/FranklinGothicLTPro-Dm.5807ef08fb53d5819.13c65f721ff1b5e2d615f8253cf3740.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Franklin Gothic LT Pro';
+  src: url('/fonts/franklin-gothic/FranklinGothicLTPro-DmIt.af43194e54a1364.432cf9ed5c24daaebd26e685b72fd90.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Franklin Gothic LT Pro';
+  src: url('/fonts/franklin-gothic/FranklinGothicLTPro-Heavy.c9ffd473baefea.1d0a972065d4eff605c07537e5ff154.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Franklin Gothic LT Pro';
+  src: url('/fonts/franklin-gothic/FranklinGothicLTPro-HeavyIt.f803a82d436b.234df37a6c0e87b9a8bba02f8f2493a.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+}
+
+
+
+
+//styling
 :root {
   --bg-deep: #05080f;
   --bg-mid: #0c2f4a;

@@ -1,17 +1,54 @@
-.home-image-wrap {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+.home-wrap {
+  position: relative;
+  background-repeat: repeat, no-repeat;  
+  object-fit: contain;
+  background-image: url('/background_with_rounded_lines.png'), url('/blue_wave_home_page.png');
+  background-blend-mode: lighten; 
+  background-size: contain;
+  > * {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Franklin Gothic LT Pro', Arial, sans-serif;
+  }
 }
 
-.home-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: translateX(-120px);
-  opacity: 0;
-  animation: home-slide-in-left 2s ease-out forwards;
+.home-initial-area-wrap {
+  position: relative;
+  // width: 100vw;
+  // height: 100vh;
+  // overflow: hidden;
+  // background-image: url("/Home_page_background.png");
+  .initial-page-title-name {
+    position: absolute;
+    top: 160px;
+    left: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: 600;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-align: left;
+    font-size: 4.2rem;
+    color: #f1f5fb;
+    font-style: normal;
+    width:300px;
+    .title-text-name {
+      display: block;
+      margin: 0;
+    }
+  }
 }
+
+// .home-image {
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+//   transform: translateX(-120px);
+//   opacity: 0;
+//   animation: home-slide-in-left 2s ease-out forwards;
+// }
 
 @keyframes home-slide-in-left {
   from {
