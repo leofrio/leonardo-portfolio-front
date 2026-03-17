@@ -23,7 +23,7 @@
   gap: clamp(20px, 5vw, 60px);
   max-width: 1200px;
   margin: 0 auto;
-  padding: clamp(16px, 3.5vw, 32px) clamp(20px, 6vw, 84px) clamp(28px, 4.5vw, 48px);
+  padding: clamp(8px, 2.75vw, 16px) clamp(20px, 6vw, 84px) clamp(28px, 4.5vw, 48px);
 
   .initial-text-area {
     display: flex;
@@ -38,7 +38,7 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     line-height: 0.9;
     letter-spacing: -0.04em;
     text-align: left;
@@ -59,13 +59,16 @@
     animation-delay: calc(1.4s + (var(--name-index) * 0.2s));
   } 
   .initial-page-subtext-area { 
-    font-size: 17.2px;
-    color:#edf0f2; 
-    .initial-page-subtext {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
+    font-size: 17px;
+    color:#edf0f2;    
+    width:63%;
+    margin:3px auto 0px auto;
+  } 
+  .initial-page-subtext {  
+    opacity: 0;
+    transform: translateX(80px);
+    animation: name-reveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(1.4s + (4 * 0.2s));
   }
 
   .initial-page-image-area {
@@ -115,7 +118,9 @@
     }
 
     .initial-page-subtext-area {
-      text-align: center;
+      align-items: center;
+      font-weight: 600; 
+      
     }
 
     .initial-page-image-area {
