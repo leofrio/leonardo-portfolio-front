@@ -4,7 +4,7 @@
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
 
 ## URL
-You can view this project here [Here][portfolio-site]
+You can view this project  [Here][portfolio-site]
 
 ## Development server
 
