@@ -1,16 +1,18 @@
 <div class="home-wrap">
   <div class="home-initial-area-wrap">
-    <!-- <img src="Home.png" alt="Home illustration" class="home-image" /> --> 
-     <div class="initial-page-title-name">
-        <span class="title-text-name">Leonardo</span>
-        <span class="title-text-name">Pontes</span>
-        <span class="title-text-name">Gaspar</span>
-     </div> 
-     <div class="initial-page-image-area">
-      <img  class="initial-page-image" src="just_me_no_background.png">
-     </div>
+    <div class="initial-page-title-name">
+      @for (namePart of fullName; track namePart; let i = $index) {
+        <span class="title-text-name" [style.--name-index]="i">{{ namePart }}</span>
+      }
+    </div>
+    <div class="initial-page-image-area">
+      <img
+        class="initial-page-image"
+        src="just_me_no_background.png"
+        alt="Leonardo Pontes Gaspar portrait"
+      />
+    </div>
   </div>
   <div class="home-second-area">
-    <!-- <img src="Home.png" alt="Home illustration" class="home-image" /> -->
   </div>
 </div>
