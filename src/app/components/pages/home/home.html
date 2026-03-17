@@ -1,9 +1,14 @@
 <div class="home-wrap">
   <div class="home-initial-area-wrap">
-    <div class="initial-page-title-name">
-      @for (namePart of fullName; track namePart; let i = $index) {
-        <span class="title-text-name" [style.--name-index]="i">{{ namePart }}</span>
-      }
+    <div class="initial-text-area">
+      <div class="initial-page-title-name">
+        @for (namePart of fullName; track namePart; let i = $index) {
+          <span class="title-text-name" [style.--name-index]="i">{{ namePart }}</span>
+        }
+      </div>  
+      <div class="initial-page-subtext-area">
+        <span class="initial-page-subtext">Software Developer</span>
+      </div>
     </div>
     <div class="initial-page-image-area">
       <img
