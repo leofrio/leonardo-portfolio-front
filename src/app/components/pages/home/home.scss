@@ -14,12 +14,15 @@
 }
 
 .home-initial-area-wrap {
-  position: relative;
+  position: relative; 
+  display: flex; 
+  flex-direction: row;
   // width: 100vw;
   // height: 100vh;
   // overflow: hidden;
   // background-image: url("/Home_page_background.png");
   .initial-page-title-name {
+
     position: absolute;
     top: 160px;
     left: 72px;
@@ -37,6 +40,14 @@
     .title-text-name {
       display: block;
       margin: 0;
+    }
+  } 
+  .initial-page-image-area { 
+    position:absolute;
+    top:0px;
+    right:5px; 
+    .initial-page-image { 
+      
     }
   }
 }
