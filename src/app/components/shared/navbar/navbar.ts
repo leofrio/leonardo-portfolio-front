@@ -66,4 +66,13 @@ export class Navbar {
   openExternalLink(eLink: string) {
     window.open(eLink, '_blank');
   }
+
+  isRouteActive(route: string): boolean {
+    const current = this.router.url.toLowerCase();
+    const target = route.toLowerCase();
+    if (target === '/') {
+      return current === '/' || current.startsWith('/home');
+    }
+    return current.startsWith(target);
+  }
 }

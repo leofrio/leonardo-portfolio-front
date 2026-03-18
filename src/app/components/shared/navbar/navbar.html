@@ -48,29 +48,36 @@
       }
     </div>
 
-    <div class="mobile-links-area">
-      @for (item of items; track $index) {
-        <button
-          class="mobile-link-btn"
-          type="button"
-          [routerLink]="item.route"
-          [pTooltip]="item.name"
-          tooltipPosition="bottom"
-          [attr.aria-label]="item.name"
-        >
-          <img class="mobile-link-svg" [src]="item.mobileIcon" [alt]="item.name" />
-        </button>
-      }
+  </div>
 
-      @for (exLink of externalLinks; track $index) {
-        <button
-          class="mobile-link-btn mobile-external-btn"
-          type="button"
-          (click)="openExternalLink(exLink.url)"
-          [pTooltip]="exLink.name"
-          tooltipPosition="bottom"
-          [attr.aria-label]="exLink.name"
-        >
+  <div class="mobile-bottom-nav" role="navigation" aria-label="Mobile navigation">
+    @for (item of items; track $index) {
+      <button
+        class="mobile-dock-btn"
+        type="button"
+        [routerLink]="item.route"
+        [class.is-active]="isRouteActive(item.route)"
+        [pTooltip]="item.name"
+        tooltipPosition="top"
+        [attr.aria-label]="item.name"
+      >
+        <span class="mobile-dock-icon-wrap">
+          <span class="mobile-dock-icon" [style.--icon-url]="'url(' + item.mobileIcon + ')'"></span>
+        </span>
+        <span class="mobile-dock-label">{{ item.name }}</span>
+      </button>
+    }
+
+    @for (exLink of externalLinks; track $index) {
+      <button
+        class="mobile-dock-btn mobile-dock-external"
+        type="button"
+        (click)="openExternalLink(exLink.url)"
+        [pTooltip]="exLink.name"
+        tooltipPosition="top"
+        [attr.aria-label]="exLink.name"
+      >
+        <span class="mobile-dock-icon-wrap">
           @if (exLink.isLayered) {
             <fa-layers>
               <fa-icon [inverse]="exLink.isInversedMask" [style]="exLink.additionalStyleMask" [icon]="exLink.mask"></fa-icon>
@@ -79,8 +86,9 @@
           } @else {
             <fa-icon size="lg" [icon]="exLink.icon"></fa-icon>
           }
-        </button>
-      }
-    </div>
+        </span>
+        <span class="mobile-dock-label">{{ exLink.name }}</span>
+      </button>
+    }
   </div>
 </nav>
