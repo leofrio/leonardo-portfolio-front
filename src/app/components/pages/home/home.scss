@@ -201,7 +201,7 @@ $light-azure: #edf0f2;
     .initial-text-area {
       order: 2;
       align-items: center;
-      gap: clamp(8px, 2vw, 14px);
+      gap: clamp(10px, 2.4vw, 17px);
       width: 100%;
       padding-inline: 4px;
     }
@@ -231,7 +231,7 @@ $light-azure: #edf0f2;
       .quote-text-area {
         align-items: center;
         text-align: center;
-        font-size: clamp(12px, 2.8vw, 15px);
+        font-size: clamp(14px, 3.4vw, 18px);
         line-height: 1.2;
         .quote-text {
           white-space: normal;
@@ -243,18 +243,18 @@ $light-azure: #edf0f2;
     .initial-page-image-area {
       justify-content: center;
       order: 1;
-      margin-top: clamp(8px, 2.2vw, 18px);
+      margin-top: clamp(10px, 2.6vw, 22px);
       padding-right: 0;
       padding-inline: clamp(12px, 4vw, 24px);
     }
 
     .initial-page-image {
-      width: min(80vw, 340px);
-      max-height: min(38vh, 320px);
+      width: min(96vw, 408px);
+      max-height: min(46vh, 384px);
     }
 
     .title-text-name {
-      font-size: clamp(1.9rem, 11vw, 3rem);
+      font-size: clamp(2.28rem, 13.2vw, 3.6rem);
     }
   }
 }
@@ -265,12 +265,12 @@ $light-azure: #edf0f2;
     padding: 26px 12px 24px;
 
     .title-text-name {
-      font-size: clamp(1.8rem, 10.5vw, 2.6rem);
+      font-size: clamp(2.16rem, 12.6vw, 3.12rem);
     }
     .initial-page-quote-area {
       gap: 6px;
       .quote-text-area {
-        font-size: 13px;
+        font-size: 15.6px;
       }
     }
 
@@ -280,8 +280,8 @@ $light-azure: #edf0f2;
     }
 
     .initial-page-image {
-      width: min(78vw, 280px);
-      max-height: min(33vh, 250px);
+      width: min(94vw, 336px);
+      max-height: min(40vh, 300px);
     }
   }
 }
@@ -289,19 +289,19 @@ $light-azure: #edf0f2;
 @media (max-width: 430px) {
   .home-initial-area-wrap {
     .initial-page-image {
-      width: min(74vw, 250px);
-      max-height: min(30vh, 220px);
+      width: min(89vw, 300px);
+      max-height: min(36vh, 264px);
     }
     .title-text-name {
-      font-size: clamp(1.7rem, 10vw, 2.3rem);
+      font-size: clamp(2.04rem, 12vw, 2.76rem);
     }
     .initial-page-subtext-area {
-      font-size: 15px;
+      font-size: 18px;
     }
     .initial-page-quote-area {
       gap: 5px;
       .quote-text-area {
-        font-size: 11.5px;
+        font-size: 13.8px;
       }
     }
   }

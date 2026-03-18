@@ -23,7 +23,7 @@
         ariaLabel="Search"
       ></p-button>
     </div>
-    <div class="links-area">
+    <div class="links-area desktop-links">
       @for (item of items; track $index) {
         <div class="nav-item" [routerLink]="item.route">{{ item.name }}</div>
       } 
@@ -47,5 +47,48 @@
         </div>
       }
     </div>
+
+  </div>
+
+  <div class="mobile-bottom-nav" role="navigation" aria-label="Mobile navigation">
+    @for (item of items; track $index) {
+      <button
+        class="mobile-dock-btn"
+        type="button"
+        [routerLink]="item.route"
+        [class.is-active]="isRouteActive(item.route)"
+        [pTooltip]="item.name"
+        tooltipPosition="top"
+        [attr.aria-label]="item.name"
+      >
+        <span class="mobile-dock-icon-wrap">
+          <span class="mobile-dock-icon" [style.--icon-url]="'url(' + item.mobileIcon + ')'"></span>
+        </span>
+        <span class="mobile-dock-label">{{ item.name }}</span>
+      </button>
+    }
+
+    @for (exLink of externalLinks; track $index) {
+      <button
+        class="mobile-dock-btn mobile-dock-external"
+        type="button"
+        (click)="openExternalLink(exLink.url)"
+        [pTooltip]="exLink.name"
+        tooltipPosition="top"
+        [attr.aria-label]="exLink.name"
+      >
+        <span class="mobile-dock-icon-wrap">
+          @if (exLink.isLayered) {
+            <fa-layers>
+              <fa-icon [inverse]="exLink.isInversedMask" [style]="exLink.additionalStyleMask" [icon]="exLink.mask"></fa-icon>
+              <fa-icon [inverse]="exLink.isInversedIcon" [transform]="exLink.transform" [icon]="exLink.icon"></fa-icon>
+            </fa-layers>
+          } @else {
+            <fa-icon size="lg" [icon]="exLink.icon"></fa-icon>
+          }
+        </span>
+        <span class="mobile-dock-label">{{ exLink.name }}</span>
+      </button>
+    }
   </div>
 </nav>
