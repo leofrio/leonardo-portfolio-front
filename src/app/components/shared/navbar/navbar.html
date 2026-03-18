@@ -23,7 +23,7 @@
         ariaLabel="Search"
       ></p-button>
     </div>
-    <div class="links-area">
+    <div class="links-area desktop-links">
       @for (item of items; track $index) {
         <div class="nav-item" [routerLink]="item.route">{{ item.name }}</div>
       } 
@@ -45,6 +45,41 @@
             <fa-icon   [icon]="fontaIcons.solid.faArrowUpRightFromSquare"></fa-icon>
           </div>
         </div>
+      }
+    </div>
+
+    <div class="mobile-links-area">
+      @for (item of items; track $index) {
+        <button
+          class="mobile-link-btn"
+          type="button"
+          [routerLink]="item.route"
+          [pTooltip]="item.name"
+          tooltipPosition="bottom"
+          [attr.aria-label]="item.name"
+        >
+          <img class="mobile-link-svg" [src]="item.mobileIcon" [alt]="item.name" />
+        </button>
+      }
+
+      @for (exLink of externalLinks; track $index) {
+        <button
+          class="mobile-link-btn mobile-external-btn"
+          type="button"
+          (click)="openExternalLink(exLink.url)"
+          [pTooltip]="exLink.name"
+          tooltipPosition="bottom"
+          [attr.aria-label]="exLink.name"
+        >
+          @if (exLink.isLayered) {
+            <fa-layers>
+              <fa-icon [inverse]="exLink.isInversedMask" [style]="exLink.additionalStyleMask" [icon]="exLink.mask"></fa-icon>
+              <fa-icon [inverse]="exLink.isInversedIcon" [transform]="exLink.transform" [icon]="exLink.icon"></fa-icon>
+            </fa-layers>
+          } @else {
+            <fa-icon size="lg" [icon]="exLink.icon"></fa-icon>
+          }
+        </button>
       }
     </div>
   </div>

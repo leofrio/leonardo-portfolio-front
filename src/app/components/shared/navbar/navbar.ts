@@ -4,6 +4,7 @@ import {
   AutoCompleteCompleteEvent,
   AutoCompleteSelectEvent,
 } from 'primeng/autocomplete';
+import { TooltipModule } from 'primeng/tooltip';
 import { ButtonModule } from 'primeng/button';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // <-- for ngModel
@@ -13,7 +14,7 @@ import { fontaIcons } from '../../../static/fontaIcons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @Component({
   selector: 'navbar',
-  imports: [AutoCompleteModule, ButtonModule, RouterLink, FormsModule, FontAwesomeModule],
+  imports: [AutoCompleteModule, ButtonModule, RouterLink, FormsModule, FontAwesomeModule, TooltipModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })
@@ -21,9 +22,9 @@ export class Navbar {
   private readonly router = inject(Router);
   searchValue: string = '';
   items = [
-    { name: 'Home', route: '/' },
-    { name: 'FAQ', route: '/faq' },
-    { name: 'Chatbot', route: '/chatBot' },
+    { name: 'Home', route: '/', mobileIcon: 'mobile_home.svg' },
+    { name: 'FAQ', route: '/faq', mobileIcon: 'mobile_faq.svg' },
+    { name: 'Chatbot', route: '/chatBot', mobileIcon: 'mobile_chatbot.svg' },
   ];
   externalLinks = [
     {
