@@ -92,4 +92,84 @@ $shadow-navbar: 0 2px 4px rgba(0, 0, 0, 0.1);
     justify-content: space-between;
     flex-wrap: wrap;
   }
+
+  @media (max-width: 900px) {
+    .navbar {
+      padding: 8px 12px;
+
+      &-container {
+        row-gap: 8px;
+      }
+    }
+
+    .logo-area {
+      width: auto;
+      flex: 0 0 auto;
+
+      .logo {
+        height: 34px;
+      }
+    }
+
+    .search-area {
+      width: auto;
+      flex: 1 1 180px;
+      min-width: 0;
+    }
+
+    .links-area {
+      width: 100%;
+      justify-content: flex-start;
+      gap: 8px 14px;
+      font-size: 0.92rem;
+    }
+
+    .ex-link-with-icon {
+      .ex-a-icon {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @media (max-width: 520px) {
+    .navbar {
+      padding: 8px;
+    }
+
+    .navbar-container {
+      display: grid;
+      width: 100%;
+      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-areas:
+        "logo search"
+        "links links";
+      gap: 8px;
+      align-items: center;
+    }
+
+    .logo-area {
+      grid-area: logo;
+    }
+
+    .search-area {
+      grid-area: search;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .links-area {
+      grid-area: links;
+      width: 100%;
+      justify-content: flex-start;
+      gap: 6px 12px;
+      font-size: 0.88rem;
+    }
+
+    .custom-autocomplete {
+      ::ng-deep .p-autocomplete-input {
+        padding: 6px;
+        font-size: 0.85rem;
+      }
+    }
+  }
 }

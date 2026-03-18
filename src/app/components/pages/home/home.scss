@@ -69,7 +69,7 @@ $light-azure: #edf0f2;
     display: inline-block;
     opacity: 0;
     transform: translateX(-80px);
-    animation: slide-in-from-the-left 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: slide-in-from-the-left 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: calc(1.4s + (4 * 0.2s));
   }
 
@@ -96,23 +96,23 @@ $light-azure: #edf0f2;
   .initial-page-quote-area {
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
     .quote-icon-area {
       margin-right: 3px;
       display: inline-flex;
       align-items: center;
+      align-self: center;
+      line-height: 1;
       opacity: 0;
       transform: translateY(-40px);
-      animation: slide-in-from-above 1.5s cubic-bezier(0.72, 1, 0.36, 1) forwards;
-      animation-delay: calc(1.4s + (4 * 0.2s));
+      animation: slide-in-from-above 2s cubic-bezier(0.72, 1, 0.36, 1) forwards;
+      animation-delay: calc(1.4s + (5 * 0.2s));
       .quote-icon {
         display: inline-block;
         transition: transform 0.25s ease-in-out;
         transform-origin: center;
       }
-      &:hover .quote-icon {
-        transform: scale(1.25);
-        cursor: pointer;
-      }
+      cursor: pointer;
     }
     .quote-text-area {
       display: flex;
@@ -121,13 +121,65 @@ $light-azure: #edf0f2;
       font-size: 19px;
       font-weight: 600;
       align-items: flex-start;
-      margin-top: auto;
+      justify-content: center;
+      margin-top: 0;
+      line-height: 1.15;
       .quote-text {
         display: inline-block;
         opacity: 0;
         transform: translateX(-80px);
         animation: slide-in-from-the-left 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         animation-delay: calc(1.4s + (5 * 0.2s));
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .home-initial-area-wrap {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    align-content: start;
+    gap: clamp(14px, 3vw, 30px);
+    padding: clamp(14px, 2.4vw, 22px) clamp(16px, 4vw, 40px) clamp(20px, 3.8vw, 34px);
+
+    .initial-text-area {
+      order: 2;
+      align-items: center;
+      width: 100%;
+      padding-inline: 8px;
+    }
+
+    .initial-page-title-name {
+      width: 100%;
+      align-items: center;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .initial-page-image-area {
+      justify-content: center;
+      order: 1;
+      padding-right: 0;
+    }
+
+    .initial-page-image {
+      width: min(80vw, 460px);
+      max-height: min(48vh, 430px);
+    }
+
+    .title-text-name {
+      font-size: clamp(2rem, 7.5vw, 3.8rem);
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-initial-area-wrap {
+    .initial-page-quote-area {
+      .quote-icon-area:hover .quote-icon {
+        transform: scale(1.25);
       }
     }
   }
@@ -150,16 +202,42 @@ $light-azure: #edf0f2;
       order: 2;
       align-items: center;
       gap: clamp(8px, 2vw, 14px);
+      width: 100%;
+      padding-inline: 4px;
     }
 
     .initial-page-title-name {
+      width: 100%;
       align-items: center;
+      text-align: center;
       margin-top: 0;
     }
 
     .initial-page-subtext-area {
       align-items: center;
       font-weight: 600;
+      width: auto;
+    }
+    .initial-page-quote-area {
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      max-width: min(96vw, 430px);
+      margin: 0 auto;
+      .quote-icon-area {
+        margin-right: 0;
+      }
+      .quote-text-area {
+        align-items: center;
+        text-align: center;
+        font-size: clamp(12px, 2.8vw, 15px);
+        line-height: 1.2;
+        .quote-text {
+          white-space: normal;
+          max-width: 100%;
+        }
+      }
     }
 
     .initial-page-image-area {
@@ -171,8 +249,12 @@ $light-azure: #edf0f2;
     }
 
     .initial-page-image {
-      width: min(100%, 500px);
-      max-height: min(60vh, 560px);
+      width: min(80vw, 340px);
+      max-height: min(38vh, 320px);
+    }
+
+    .title-text-name {
+      font-size: clamp(1.9rem, 11vw, 3rem);
     }
   }
 }
@@ -183,7 +265,13 @@ $light-azure: #edf0f2;
     padding: 26px 12px 24px;
 
     .title-text-name {
-      font-size: clamp(2rem, 14vw, 3.1rem);
+      font-size: clamp(1.8rem, 10.5vw, 2.6rem);
+    }
+    .initial-page-quote-area {
+      gap: 6px;
+      .quote-text-area {
+        font-size: 13px;
+      }
     }
 
     .initial-page-image-area {
@@ -192,8 +280,29 @@ $light-azure: #edf0f2;
     }
 
     .initial-page-image {
-      width: min(100%, 360px);
-      max-height: min(52vh, 430px);
+      width: min(78vw, 280px);
+      max-height: min(33vh, 250px);
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .home-initial-area-wrap {
+    .initial-page-image {
+      width: min(74vw, 250px);
+      max-height: min(30vh, 220px);
+    }
+    .title-text-name {
+      font-size: clamp(1.7rem, 10vw, 2.3rem);
+    }
+    .initial-page-subtext-area {
+      font-size: 15px;
+    }
+    .initial-page-quote-area {
+      gap: 5px;
+      .quote-text-area {
+        font-size: 11.5px;
+      }
     }
   }
 }
