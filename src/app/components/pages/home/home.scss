@@ -79,8 +79,12 @@ $light-azure: #edf0f2;
     align-items: center;
     width: 100%;
     min-width: 0;
-    padding-right: clamp(8px, 2vw, 24px);
-    order: 2;
+    padding-right: clamp(8px, 2vw, 24px); 
+    transition: transform 0.3s ease-in;
+    order: 2; 
+    &:hover { 
+      transform: scale(1.1);
+    }
   }
 
   .initial-page-image {
@@ -91,7 +95,7 @@ $light-azure: #edf0f2;
     opacity: 0;
     transform: translateX(80px);
     will-change: transform, opacity;
-    animation: image-enter 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+    animation: image-enter 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards; 
   }
   .initial-page-quote-area {
     display: flex;
