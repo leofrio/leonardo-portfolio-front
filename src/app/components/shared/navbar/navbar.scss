@@ -157,9 +157,14 @@ $shadow-navbar: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .custom-autocomplete {
-      ::ng-deep .p-autocomplete-input {
-        padding: 9px 12px;
-        font-size: 0.93rem;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      :host {
+        ::ng-deep .p-autocomplete-input {
+          padding: 9px 12px;
+          font-size: 0.93rem;
+        }
       }
     }
 
@@ -186,7 +191,10 @@ $shadow-navbar: 0 2px 4px rgba(0, 0, 0, 0.1);
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        transition:
+          transform 0.2s ease,
+          background-color 0.2s ease,
+          box-shadow 0.2s ease;
       }
 
       .mobile-dock-icon {
@@ -263,9 +271,14 @@ $shadow-navbar: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .custom-autocomplete {
-      ::ng-deep .p-autocomplete-input {
-        padding: 8px 10px;
-        font-size: 0.88rem;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      :host {
+        ::ng-deep .p-autocomplete-input {
+          padding: 8px 10px;
+          font-size: 0.88rem;
+        }
       }
     }
 
