@@ -56,7 +56,7 @@ export class Footer {
     },
     {
       name: 'CV',
-      url: 'leonardo_gaspar_cv_2026_v4.pdf',
+      url: 'leonardo_gaspar_ats_cv_v5.pdf',
       isLayered: false,
       id: 'cv',
       icon: fontaIcons.regular.faFileLines,

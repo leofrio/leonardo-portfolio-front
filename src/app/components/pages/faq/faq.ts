@@ -57,7 +57,7 @@ export class Faq {
     github: 'https://github.com/leofrio/leonardo-portfolio-front',
     linkedin: 'https://www.linkedin.com/in/leonardo-pontes-gaspar-7aabab248/',
     glender: 'https://glender-front.vercel.app/home',
-    cv: 'leonardo_gaspar_cv_2026_v4.pdf',
+    cv: 'leonardo_gaspar_ats_cv_v5.pdf',
   };
   readonly footerTypeToSelector: Record<FooterSection, string> = {
     github: '#github',
